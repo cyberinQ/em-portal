@@ -1,300 +1,304 @@
 <!DOCTYPE html>
+<!--
+Author: Sunil Jain, 2026-04-02
+Description: EmpowerAI Cyber-Physical Hypervisor Landing Page (Final)
+-->
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMPOWERAI // The Cyber-Physical Hypervisor</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --panel-bg: #121212;
-            --border-color: #2a2a2a;
-            --text-main: #e0e0e0;
-            --text-muted: #888888;
-            --cyan: #00f0ff;
-            --magenta: #ff0055;
-            --yellow: #ffaa00;
-            --green: #00ffcc;
-        }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMPOWERAI // Cyber-Physical Hypervisor</title>
 
-        .container {
-            width: 100%;
-            max-width: 1600px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #888;
+      --accent: #00f0ff;
+      --accent2: #ffaa00;
+    }
 
-        /* --- HEADER (Centered & Responsive) --- */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-bottom: 3px solid var(--cyan);
-            padding-bottom: 30px;
-            gap: 15px;
-        }
-        
-        .header-logo img { 
-            height: 110px; /* Slightly larger as requested */
-            width: auto; 
-            object-fit: contain; 
-            margin-bottom: 10px;
-        }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .header-text { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
-            gap: 10px;
-        }
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 40px 20px;
+    }
 
-        h1 { 
-            color: var(--cyan); 
-            font-size: clamp(2rem, 4vw, 3.5rem); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            line-height: 1.2; 
-        }
-        h2 { 
-            color: var(--text-muted); 
-            font-size: clamp(1.2rem, 2vw, 1.8rem); 
-            font-weight: 300; 
-        }
-        .highlight { color: var(--yellow); font-weight: bold; }
-        
-        .contact-info { 
-            font-family: 'Courier New', Courier, monospace; 
-            font-size: 1.05rem; 
-            color: var(--cyan); 
-            letter-spacing: 0.5px;
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: 1px dashed var(--cyan);
-            background-color: rgba(0, 240, 255, 0.05);
-            border-radius: 4px;
-        }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 30px;
+    }
 
-        .contact-info span {
-            color: var(--text-main);
-        }
+    h1 {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
 
-        /* --- MAIN 3 PILLARS --- */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
+    h2 {
+      font-weight: 300;
+      color: var(--muted);
+    }
 
-        .panel {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+    .tagline {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: var(--accent2);
+    }
 
-        .panel.center-panel {
-            border-color: var(--magenta);
-            box-shadow: 0 0 20px rgba(255,0,85,0.15);
-        }
+    .section {
+      margin-top: 50px;
+    }
 
-        .panel h3 {
-            color: var(--magenta);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            text-transform: uppercase;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
 
-        .panel.center-panel h3 { color: var(--yellow); }
-        .panel h4 { color: var(--cyan); font-size: 1.4rem; margin: 15px 0 10px 0; }
-        .panel p { font-size: 1.1rem; margin-bottom: 15px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 25px;
+    }
 
-        .math-block {
-            background-color: #050505;
-            border-left: 4px solid var(--yellow);
-            padding: 15px;
-            margin: 15px 0;
-            font-size: 1.2rem;
-            text-align: center;
-            overflow-x: auto;
-        }
-        
-        pre {
-            background-color: #050505;
-            color: var(--green);
-            padding: 15px;
-            border-left: 4px solid var(--green);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            overflow-x: auto;
-            margin-top: auto;
-        }
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
 
-        /* --- PORTAL LINKS SECTION --- */
-        .portal-section {
-            border-top: 2px solid var(--border-color);
-            padding-top: 30px;
-        }
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-        .portal-section h3 {
-            color: var(--text-main);
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .highlight {
+      color: var(--accent2);
+    }
 
-        .portal-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+    .code {
+      background: #050505;
+      border-left: 3px solid var(--accent);
+      padding: 15px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
 
-        .portal-card {
-            background-color: var(--panel-bg);
-            border: 1px solid;
-            border-radius: 8px;
-            padding: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 200px;
-        }
+    .demo-card {
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 8px;
+      background: var(--panel);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
 
-        .portal-card h2 { font-size: 1.5rem; margin-bottom: 15px; }
-        .portal-card p { font-size: 1rem; color: #aaa; margin-bottom: 20px; line-height: 1.4;}
-        
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            border: 1px solid;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-        }
-    </style>
+    .demo-card:hover {
+      box-shadow: 0 0 12px var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cta {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .cta span {
+      color: var(--accent);
+    }
+
+  </style>
 </head>
+
 <body>
 
 <div class="container">
-    <header>
-        <div class="header-logo">
-            <img src="CyberinQ_Logo.png" alt="CyberinQ Logo">
-        </div>
-        <div class="header-text">
-            <h1>The Cyber-Physical Hypervisor</h1>
-            <h2>Mechanism-as-a-Service (MaaS) for <span class="highlight">Autonomous, Formally Verified Scientific Discovery</span></h2>
-        </div>
-        <div class="contact-info">
-            Point of Contact: <span>Sunil Jain</span><br>
-            ceo@empowerai.us <span>|</span> +1.503.705.5096
-        </div>
-    </header>
 
-    <div class="content-grid">
-        <div class="panel">
-            <h3>1. Disentangling Data</h3>
-            <h4>Latent Manifold Extraction</h4>
-            <p>We eliminate "black box" empiricism. Our architecture factorizes chaotic multi-agent environments using <strong>CANDECOMP/PARAFAC (CP) Tensor Decomposition</strong> to isolate hidden correlations.</p>
-            
-            <h4>Physics-Informed Deconvolution</h4>
-            <p>Automating anomaly detection by quantifying divergence between declared intent and ground-truth physics:</p>
-            <div class="math-block">
-                $$\mathcal{D}_{i}^{(t)}=\alpha||\phi(x_{dec})-\psi(x_{phys})||_{2}^{2}+\beta\mathcal{H}(x_{cyber})$$
-            </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);"><em>Separating non-linear signal overlaps bounded by immutable mass-balance constraints.</em></p>
-        </div>
+<header>
 
-        <div class="panel center-panel">
-            <h3>2. Algorithmic Self-Awareness</h3>
-            <h4>Inverse Hamiltonian Architectures</h4>
-            <p>Rather than forward-guessing, the system mathematically back-calculates the exact policy potential field required to force an environment into a defined stable state.</p>
-            
-            <h4>Formal Verification Gate</h4>
-            <p>AI understands its own fundamental boundaries. <strong>dReal SMT solvers</strong> mathematically prove \(\delta\)-reachability before actuation.</p>
-            <p style="color: var(--yellow); font-weight: bold; margin-top: 10px;">➔ Hallucinations are impossible; undecidable states trigger mathematically proven Safe State Reverts.</p>
-        </div>
+  <!-- LOGO -->
+  <div style="margin-bottom:15px;">
+    <img src="CyberinQ_Logo.png" alt="CyberinQ Logo" style="height:90px;" />
+  </div>
 
-        <div class="panel">
-            <h3>3. Governing Collaboration</h3>
-            <h4>Applied Category Theory (ACT)</h4>
-            <p>Provides a rigorous mathematical language for AI swarms by mapping networks as categories and adversarial adaptations as natural transformations.</p>
-            
-            <h4>Zero-Knowledge Information Theory</h4>
-            <p>Agents mathematically prove state and intelligence to the swarm via recursive zk-STARKs without exposing raw telemetry data.</p>
-<pre><code>// EDGE VERIFICATION (RUST)
-if OFAC_LIST.contains(&sender) {
-  return Proof { valid: false };
-}
-if balance < amount {
-  return Proof { valid: false };
-}</code></pre>
-        </div>
+  <h1>Cyber-Physical Hypervisor</h1>
+  <h2>A Runtime for Unified Reasoning Across Cyber, Physical, and AI Systems</h2>
+
+  <div class="tagline">
+    Same runtime. Same API. Same constraint engine. <br/>
+    <span class="highlight">Only the domain changes.</span>
+  </div>
+
+  <!-- CONTACT -->
+  <div style="
+      margin-top:20px;
+      font-family:monospace;
+      color:var(--accent);
+      border:1px dashed var(--accent);
+      display:inline-block;
+      padding:10px 15px;
+      border-radius:6px;">
+      
+      Point of Contact: <span style="color:white">Sunil Jain</span><br/>
+      sunil@empowerai.us | +1.503.705.5096
+  </div>
+
+</header>
+
+
+<!-- CORE ABSTRACTION -->
+<div class="section">
+  <h2>1. Core Abstraction</h2>
+  <div class="card">
+
+    <p>All systems reduce to a common structure:</p>
+
+    <div class="code">
+G(t) = (Entities, Relationships, State(t), Constraints)
     </div>
 
-    <div class="portal-section">
-        <h3>Empirical TRL-4 Breadboards <span style="color:var(--text-muted); font-size:1rem; display:block; margin-top:5px; font-weight:normal;">[ Select Application to Initiate Uplink ]</span></h3>
-        
-        <div class="portal-container">
-            
-            <a href="https://amdae.empowerai.us" class="portal-card" style="border-color: #00f0ff; color: #00f0ff;" onmouseover="this.style.boxShadow='0 0 20px #00f0ff'" onmouseout="this.style.boxShadow='none'">
-                <h2>[ SMORE ]</h2>
-                <p><strong>Space Domain Awareness:</strong> Orbital POMDPs executing multi-agent stealth maneuvers via encrypted heartbeats.</p>
-                <div><span class="status-badge" style="color: #00f0ff; border-color: #00f0ff;">NODE: SPACE / C2</span></div>
-            </a>
+    <p>
+      This <span class="highlight">Unified State Graph</span> enables one system to model,
+      simulate, and control across domains.
+    </p>
 
-            <a href="https://manifold.empowerai.us" class="portal-card" style="border-color: #ffaa00; color: #ffaa00;" onmouseover="this.style.boxShadow='0 0 20px #ffaa00'" onmouseout="this.style.boxShadow='none'">
-                <h2>[ MANIFOLD ]</h2>
-                <p><strong>Geoeconomics:</strong> Deep Inverse Reinforcement Learning targeting global supply-chain phase transitions.</p>
-                <div><span class="status-badge" style="color: #ffaa00; border-color: #ffaa00;">NODE: MACRO / CLOUD</span></div>
-            </a>
+  </div>
+</div>
 
-            <a href="https://smash.empowerai.us" class="portal-card" style="border-color: #ff00ff; color: #ff00ff;" onmouseover="this.style.boxShadow='0 0 20px #ff00ff'" onmouseout="this.style.boxShadow='none'">
-                <h2>[ SMASH ]</h2>
-                <p><strong>Chemistry:</strong> Dynamic thermodynamic routing and inline mass-spec deconvolution for rare-earth micro-refineries.</p>
-                <div><span class="status-badge" style="color: #ff00ff; border-color: #ff00ff;">NODE: EDGE / HARDWARE</span></div>
-            </a>
 
-            <a href="https://www.medsai.us" class="portal-card" style="border-color: #00ffcc; color: #00ffcc;" onmouseover="this.style.boxShadow='0 0 20px #00ffcc'" onmouseout="this.style.boxShadow='none'">
-                <h2>[ MedsAi ]</h2>
-                <p><strong>Biology:</strong> Cardiovascular digital twins routing non-linear trauma responses in resource-constrained edges.</p>
-                <div><span class="status-badge" style="color: #00ffcc; border-color: #00ffcc;">NODE: EDGE / BIO</span></div>
-            </a>
+<!-- ARCHITECTURE -->
+<div class="section">
+  <h2>2. Architecture</h2>
 
-            <a href="https://orthogon.empowerai.us" class="portal-card" style="border-color: #ff0055; color: #ff0055;" onmouseover="this.style.boxShadow='0 0 20px #ff0055'" onmouseout="this.style.boxShadow='none'">
-                <h2>[ ORTHOGON ]</h2>
-                <p><strong>Cyber-Resiliency:</strong> Cryptographic compliance containers and recursive zk-STARKs securing C2 networks.</p>
-                <div><span class="status-badge" style="color: #ff0055; border-color: #ff0055;">NODE: FOG / VERIFICATION</span></div>
-            </a>
+  <div class="grid">
 
-        </div>
+    <div class="card">
+      <h3>Representation</h3>
+      <p>Encodes systems as time-evolving graphs.</p>
     </div>
+
+    <div class="card">
+      <h3>Constraint Engine</h3>
+      <p>Unifies physics, policy, and AI into one solver.</p>
+    </div>
+
+    <div class="card">
+      <h3>Transformation Algebra</h3>
+      <p>Composable operators govern system evolution.</p>
+    </div>
+
+    <div class="card">
+      <h3>Runtime</h3>
+      <p>Executes real-time inference and control.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- API -->
+<div class="section">
+  <h2>3. Minimal Interface</h2>
+
+  <div class="card">
+    <div class="code">
+class CPH:
+    def register_entity(self, id, state): pass
+    def add_constraint(self, fn): pass
+    def apply_operator(self, op): pass
+    def step(self, dt): pass
+    def query(self, predicate): pass
+    </div>
+  </div>
+
+</div>
+
+
+<!-- DEMOS -->
+<div class="section">
+  <h2>4. Cross-Domain Demonstrations</h2>
+
+  <p style="color: var(--muted); margin-bottom:20px;">
+    Each demo is an instantiation of the same hypervisor—only the constraints change.
+  </p>
+
+  <div class="grid">
+
+    <a href="https://orthogon.empowerai.us" class="demo-card">
+      <h3>ORTHOGON (Cyber)</h3>
+      <p>Trust graphs + cryptographic constraints enforced via unified runtime.</p>
+    </a>
+
+    <a href="https://amdae.empowerai.us" class="demo-card">
+      <h3>SMORE (Space)</h3>
+      <p>Orbital systems modeled as constrained state evolution.</p>
+    </a>
+
+    <a href="https://manifold.empowerai.us" class="demo-card">
+      <h3>MANIFOLD (Geoeconomics)</h3>
+      <p>Supply chains modeled as flow constraints on dynamic graphs.</p>
+    </a>
+
+    <a href="https://smash.empowerai.us" class="demo-card">
+      <h3>SMASH (Chemistry)</h3>
+      <p>Material transformations governed by thermodynamic constraints.</p>
+    </a>
+
+    <a href="https://www.medsai.us" class="demo-card">
+      <h3>MedsAI (Biology)</h3>
+      <p>Human physiology modeled as evolving constrained systems.</p>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- DIFFERENTIATION -->
+<div class="section">
+  <h2>5. Why This Matters</h2>
+
+  <div class="card">
+    <p>
+      Traditional systems optimize within domains.<br/><br/>
+      This platform enables:
+    </p>
+
+    <ul>
+      <li>✔ One representation across domains</li>
+      <li>✔ One constraint-solving runtime</li>
+      <li>✔ One composable execution model</li>
+    </ul>
+
+    <p class="highlight">
+      The demos are proofs of a single system—not separate products.
+    </p>
+  </div>
+</div>
+
+
+<!-- CTA -->
+<div class="cta">
+  <p><span>Seeking partners:</span> defense, healthcare, infrastructure</p>
+  <p>Contact: sunil@empowerai.us</p>
+</div>
+
+
 </div>
 
 </body>
