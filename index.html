@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <!--
 Author: Sunil Jain, 2026-04-02
-Description: EmpowerAI Cyber-Physical Hypervisor Landing Page (Final)
+Description: Landing page with unified Cyber-Physical Hypervisor narrative while preserving domain demos as proof of generality.
 -->
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -19,6 +18,7 @@ Description: EmpowerAI Cyber-Physical Hypervisor Landing Page (Final)
       --muted: #888;
       --accent: #00f0ff;
       --accent2: #ffaa00;
+      --danger: #ff0055;
     }
 
     body {
@@ -103,8 +103,6 @@ Description: EmpowerAI Cyber-Physical Hypervisor Landing Page (Final)
       padding: 20px;
       border-radius: 8px;
       background: var(--panel);
-      text-decoration: none;
-      color: inherit;
       transition: all 0.2s ease;
     }
 
@@ -125,77 +123,57 @@ Description: EmpowerAI Cyber-Physical Hypervisor Landing Page (Final)
 
   </style>
 </head>
-
 <body>
 
 <div class="container">
 
 <header>
-
-  <!-- LOGO -->
   <div style="margin-bottom:15px;">
-    <img src="CyberinQ_Logo.png" alt="CyberinQ Logo" style="height:90px;" />
+    <img src="CyberinQ_Logo.png" alt="CyberinQ Logo" style="height:90px; object-fit:contain;" />
   </div>
-
   <h1>Cyber-Physical Hypervisor</h1>
   <h2>A Runtime for Unified Reasoning Across Cyber, Physical, and AI Systems</h2>
-
   <div class="tagline">
-    Same runtime. Same API. Same constraint engine. <br/>
-    <span class="highlight">Only the domain changes.</span>
+    One abstraction → many domains. <span class="highlight">State + Constraints + Transformations</span>
   </div>
 
-  <!-- CONTACT -->
-  <div style="
-      margin-top:20px;
-      font-family:monospace;
-      color:var(--accent);
-      border:1px dashed var(--accent);
-      display:inline-block;
-      padding:10px 15px;
-      border-radius:6px;">
-      
-      Point of Contact: <span style="color:white">Sunil Jain</span><br/>
-      sunil@empowerai.us | +1.503.705.5096
+  <div style="margin-top:20px; font-family:monospace; color:var(--accent); border:1px dashed var(--accent); display:inline-block; padding:10px 15px; border-radius:6px;">
+    Point of Contact: <span style="color:var(--text)">Sunil Jain</span><br/>
+    sunil@empowerai.us | +1.503.705.5096
   </div>
-
 </header>
 
 
-<!-- CORE ABSTRACTION -->
+<!-- CORE IDEA -->
 <div class="section">
-  <h2>1. Core Abstraction</h2>
+  <h2>1. The Core Abstraction</h2>
   <div class="card">
-
     <p>All systems reduce to a common structure:</p>
 
     <div class="code">
-G(t) = (Entities, Relationships, State(t), Constraints)
+      G(t) = (Entities, Relationships, State(t), Constraints)
     </div>
 
     <p>
-      This <span class="highlight">Unified State Graph</span> enables one system to model,
-      simulate, and control across domains.
+      This Unified State Graph enables a single runtime to model, simulate, and control systems across domains.
     </p>
-
   </div>
 </div>
 
 
 <!-- ARCHITECTURE -->
 <div class="section">
-  <h2>2. Architecture</h2>
-
+  <h2>2. System Architecture</h2>
   <div class="grid">
 
     <div class="card">
       <h3>Representation</h3>
-      <p>Encodes systems as time-evolving graphs.</p>
+      <p>Encodes all systems as time-evolving graphs.</p>
     </div>
 
     <div class="card">
       <h3>Constraint Engine</h3>
-      <p>Unifies physics, policy, and AI into one solver.</p>
+      <p>Unifies physics, policy, and learned priors into one solver.</p>
     </div>
 
     <div class="card">
@@ -205,7 +183,7 @@ G(t) = (Entities, Relationships, State(t), Constraints)
 
     <div class="card">
       <h3>Runtime</h3>
-      <p>Executes real-time inference and control.</p>
+      <p>Executes real-time inference, simulation, and control.</p>
     </div>
 
   </div>
@@ -215,7 +193,6 @@ G(t) = (Entities, Relationships, State(t), Constraints)
 <!-- API -->
 <div class="section">
   <h2>3. Minimal Interface</h2>
-
   <div class="card">
     <div class="code">
 class CPH:
@@ -226,23 +203,21 @@ class CPH:
     def query(self, predicate): pass
     </div>
   </div>
-
 </div>
 
 
 <!-- DEMOS -->
 <div class="section">
   <h2>4. Cross-Domain Demonstrations</h2>
-
   <p style="color: var(--muted); margin-bottom:20px;">
-    Each demo is an instantiation of the same hypervisor—only the constraints change.
+    Each system below is not a standalone product—it is an instantiation of the same underlying hypervisor.
   </p>
 
   <div class="grid">
 
     <a href="https://orthogon.empowerai.us" class="demo-card">
       <h3>ORTHOGON (Cyber)</h3>
-      <p>Trust graphs + cryptographic constraints enforced via unified runtime.</p>
+      <p>Trust graphs + cryptographic constraints enforced via the same runtime.</p>
     </a>
 
     <a href="https://amdae.empowerai.us" class="demo-card">
@@ -252,17 +227,17 @@ class CPH:
 
     <a href="https://manifold.empowerai.us" class="demo-card">
       <h3>MANIFOLD (Geoeconomics)</h3>
-      <p>Supply chains modeled as flow constraints on dynamic graphs.</p>
+      <p>Supply chains expressed as flow constraints on dynamic graphs.</p>
     </a>
 
     <a href="https://smash.empowerai.us" class="demo-card">
       <h3>SMASH (Chemistry)</h3>
-      <p>Material transformations governed by thermodynamic constraints.</p>
+      <p>Material transformations modeled via thermodynamic constraints.</p>
     </a>
 
     <a href="https://www.medsai.us" class="demo-card">
       <h3>MedsAI (Biology)</h3>
-      <p>Human physiology modeled as evolving constrained systems.</p>
+      <p>Human physiology represented as evolving constrained systems.</p>
     </a>
 
   </div>
@@ -272,10 +247,10 @@ class CPH:
 <!-- DIFFERENTIATION -->
 <div class="section">
   <h2>5. Why This Matters</h2>
-
   <div class="card">
     <p>
-      Traditional systems optimize within domains.<br/><br/>
+      Traditional systems optimize within domains.
+      <br/><br/>
       This platform enables:
     </p>
 
@@ -286,8 +261,73 @@ class CPH:
     </ul>
 
     <p class="highlight">
-      The demos are proofs of a single system—not separate products.
+      The demos are not separate products—they are proofs of a single underlying system.
     </p>
+  </div>
+</div>
+
+<!-- SECTION 6: INSIGHT GLIMPSES -->
+<div class="section">
+  <h2>6. Insight Glimpses (Mechanisms, not Buzzwords)</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Mechanism-as-a-Service (MaaS)</h3>
+      <p>All domains compile to the same constrained optimization kernel:</p>
+      <div class="code">
+minimize:   L(X) = L_phys + L_policy + L_learned
+subject to: C(X) = 0
+      </div>
+      <p>Physics, policy, and learned priors co-solve—no separate pipelines.</p>
+    </div>
+
+    <div class="card">
+      <h3>Digital Twin (State Evolution)</h3>
+      <p>Deterministic + stochastic evolution over the same state graph:</p>
+      <div class="code">
+X(t+1) = T_learned ∘ T_policy ∘ T_physics (X(t))
+      </div>
+      <p>Single runtime supports simulation and control.</p>
+    </div>
+
+    <div class="card">
+      <h3>δ-Verification (Safety Gate)</h3>
+      <p>Only actions with bounded risk are executed:</p>
+      <div class="code">
+prove:  Reachable(S, δ) ⇒ Safe
+else:   revert()
+      </div>
+      <p>SMT-backed checks before actuation.</p>
+    </div>
+
+    <div class="card">
+      <h3>POMDP on Graphs</h3>
+      <p>Partial observability handled natively:</p>
+      <div class="code">
+b_t = η · O(o_t | s_t) · Σ T(s_t|s_{t-1},a_{t-1}) · b_{t-1}
+      </div>
+      <p>Belief updates operate on graph-structured state.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tensor-of-Tensors</h3>
+      <p>Cross-domain coupling via shared factors:</p>
+      <div class="code">
+X ≈ Σ a_r ⊗ b_r ⊗ c_r
+      </div>
+      <p>CP-style decomposition aligns signals across domains.</p>
+    </div>
+
+    <div class="card">
+      <h3>Constraint Composition</h3>
+      <p>Heterogeneous rules unified as one system:</p>
+      <div class="code">
+C = C_physics ∪ C_policy ∪ C_resource
+      </div>
+      <p>One solver, many rule sets.</p>
+    </div>
+
   </div>
 </div>
 
@@ -297,7 +337,6 @@ class CPH:
   <p><span>Seeking partners:</span> defense, healthcare, infrastructure</p>
   <p>Contact: sunil@empowerai.us</p>
 </div>
-
 
 </div>
 
