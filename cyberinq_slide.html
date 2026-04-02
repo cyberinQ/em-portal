@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber-Physical Hypervisor - MATHBAC Slide</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --panel-bg: #121212;
+            --border-color: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --cyan: #00f0ff;
+            --magenta: #ff0055;
+            --yellow: #ffaa00;
+            --green: #00ffcc;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* 16:9 Slide Dimensions */
+        .slide-container {
+            width: 1920px;
+            height: 1080px;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: grid;
+            grid-template-rows: 15% 65% 20%;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            padding: 40px;
+            gap: 30px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--cyan);
+            padding-bottom: 10px;
+        }
+        .header-text { display: flex; flex-direction: column; }
+        h1 { color: var(--cyan); font-size: 3.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: var(--text-muted); font-size: 1.8rem; font-weight: 300; margin-top: 10px;}
+        .highlight { color: var(--yellow); font-weight: bold; }
+        
+        /* Logo & Contact Info */
+        .header-logo { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; 
+            justify-content: center; 
+            gap: 8px;
+        }
+        .header-logo img { height: 75px; width: auto; object-fit: contain; }
+        .contact-info { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 0.95rem; 
+            color: var(--cyan); 
+            letter-spacing: 0.5px;
+        }
+
+        /* Main 3-Column Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel h3 {
+            color: var(--magenta);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .panel h4 { color: var(--cyan); font-size: 1.4rem; margin: 15px 0 10px 0; }
+        .panel p { font-size: 1.15rem; line-height: 1.6; margin-bottom: 15px; }
+
+        /* Code/Math Blocks */
+        .math-block {
+            background-color: #050505;
+            border-left: 4px solid var(--yellow);
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        pre {
+            background-color: #050505;
+            color: var(--green);
+            padding: 15px;
+            border-left: 4px solid var(--green);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.05rem;
+            overflow-x: auto;
+            margin-top: auto;
+        }
+
+        /* Footer Breadboards - 5 Column Grid */
+        footer {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            border-top: 2px solid var(--border-color);
+            padding-top: 20px;
+        }
+        .footer-card {
+            border-left: 3px solid var(--cyan);
+            padding-left: 15px;
+        }
+        .footer-card h4 { color: var(--cyan); font-size: 1.1rem; margin-bottom: 5px; }
+        .footer-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <header>
+        <div class="header-text">
+            <h1>The Cyber-Physical Hypervisor</h1>
+            <h2>Mechanism-as-a-Service (MaaS) for <span class="highlight">Autonomous, Formally Verified Scientific Discovery</span></h2>
+        </div>
+        <div class="header-logo">
+            <img src="CyberinQ_Logo.png" alt="CyberinQ Logo">
+            <div class="contact-info">Contact: Sunil Jain | ceo@empowerai.us | +1.503.705.5096</div>
+        </div>
+    </header>
+
+    <div class="content-grid">
+        
+        <div class="panel">
+            <h3>1. Disentangling Data</h3>
+            <h4>Latent Manifold Extraction</h4>
+            <p>We eliminate "black box" empiricism. Our architecture factorizes chaotic multi-agent environments using <strong>CANDECOMP/PARAFAC (CP) Tensor Decomposition</strong> to isolate hidden correlations.</p>
+            
+            <h4>Physics-Informed Deconvolution</h4>
+            <p>Automating anomaly detection by quantifying divergence between declared intent and ground-truth physics:</p>
+            <div class="math-block">
+                $$\mathcal{D}_{i}^{(t)}=\alpha||\phi(x_{dec})-\psi(x_{phys})||_{2}^{2}+\beta\mathcal{H}(x_{cyber})$$
+            </div>
+            <p style="font-size: 1rem; color: var(--text-muted);"><em>Separating non-linear signal overlaps bounded by immutable mass-balance constraints.</em></p>
+        </div>
+
+        <div class="panel" style="border-color: var(--magenta); box-shadow: 0 0 15px rgba(255,0,85,0.1);">
+            <h3 style="color: var(--yellow);">2. Algorithmic Self-Awareness</h3>
+            <h4>Inverse Hamiltonian Architectures</h4>
+            <p>Rather than forward-guessing, the system mathematically back-calculates the exact policy potential field required to force an environment into a defined stable state.</p>
+            
+            <h4>Formal Verification Gate</h4>
+            <p>AI understands its own fundamental boundaries. <strong>dReal SMT solvers</strong> mathematically prove \(\delta\)-reachability before actuation.</p>
+            <p style="color: var(--yellow); font-weight: bold; margin-top: 10px;">➔ Hallucinations are impossible; undecidable states trigger mathematically proven Safe State Reverts.</p>
+        </div>
+
+        <div class="panel">
+            <h3>3. Governing Collaboration</h3>
+            <h4>Applied Category Theory (ACT)</h4>
+            <p>Provides a rigorous mathematical language for AI swarms by mapping networks as categories and adversarial adaptations as natural transformations.</p>
+            
+            <h4>Zero-Knowledge Information Theory</h4>
+            <p>Agents mathematically prove state and intelligence to the swarm via recursive zk-STARKs without exposing raw telemetry data.</p>
+<pre><code>// EDGE VERIFICATION (RUST)
+if OFAC_LIST.contains(&sender) {
+  return Proof { valid: false };
+}
+if balance < amount {
+  return Proof { valid: false };
+}</code></pre>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-card">
+            <h4>SMORE (Space)</h4>
+            <p>Orbital POMDPs executing multi-agent stealth maneuvers via encrypted heartbeats.</p>
+        </div>
+        <div class="footer-card">
+            <h4>MANIFOLD (Geoeconomics)</h4>
+            <p>Deep Inverse RL targeting global supply-chain phase transitions.</p>
+        </div>
+        <div class="footer-card">
+            <h4>SMASH (Chemistry)</h4>
+            <p>Dynamic thermodynamic routing for rare-earth micro-refineries.</p>
+        </div>
+        <div class="footer-card">
+            <h4>MedsAi (Biology)</h4>
+            <p>Cardiovascular digital twins routing trauma responses at the tactical edge.</p>
+        </div>
+        <div class="footer-card">
+            <h4>ORTHOGON (Cyber)</h4>
+            <p>Cryptographic compliance containers and zk-STARKs securing C2 networks.</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
