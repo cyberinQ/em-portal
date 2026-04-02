@@ -7,124 +7,96 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --panel-bg: #141414;
-            --border-color: #333333;
-            --text-main: #e0e0e0;
-            --cyan: #00f0ff;
+            --bg: #0f1115; 
+            --panel: #1a1d24; 
+            --border: #2e323a;
+            --text: #e2e8f0; 
+            --muted: #94a3b8; 
+            --accent: #00e5ff; 
+            --accent2: #f5a623; 
             --magenta: #ff0055;
-            --yellow: #ffaa00;
-            --green: #00ffcc;
-            --text-muted: #aaaaaa;
+            --code-text: #a5d6ff;
         }
         
         * { box-sizing: border-box; }
         
-        /* 48x36 inch Poster Sizing */
         body {
-            margin: 0;
-            padding: 0;
-            width: 48in;
-            height: 36in;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            margin: 0; padding: 0; width: 48in; height: 36in;
+            background-color: var(--bg); color: var(--text);
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
         }
 
         .poster-grid {
-            width: 46in;
-            height: 34in;
-            display: grid;
-            grid-template-rows: 10% 12% 63% 13%;
-            grid-template-columns: 1fr;
-            gap: 0.3in;
+            width: 46in; height: 34in;
+            display: grid; grid-template-rows: 12% 73% 13%; gap: 0.3in;
         }
 
         .panel {
-            background-color: var(--panel-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 0.4in;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: var(--panel); border: 2px solid var(--border);
+            border-radius: 12px; padding: 0.4in; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column;
         }
 
         /* Typography */
-        h1 { color: var(--cyan); font-size: 3.5rem; margin: 0 0 0.1in 0; text-transform: uppercase; letter-spacing: 2px;}
-        h2 { color: var(--text-main); font-size: 1.8rem; margin: 0; font-weight: 300; }
-        h3 { color: var(--yellow); font-size: 1.6rem; margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 0.1in;}
-        h4 { color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.1in; }
-        p, li { font-size: 1.1rem; line-height: 1.6; }
+        h1 { color: var(--accent); font-size: 3.8rem; margin: 0 0 0.05in 0; text-transform: uppercase; letter-spacing: 1px;}
+        h2 { color: var(--muted); font-size: 1.8rem; margin: 0; font-weight: 300; }
+        h3 { color: var(--accent2); font-size: 1.6rem; margin-top: 0; border-bottom: 2px solid var(--border); padding-bottom: 0.1in; text-transform: uppercase;}
+        h4 { color: var(--accent); font-size: 1.3rem; margin: 0.2in 0 0.1in 0; }
+        p, li { font-size: 1.1rem; line-height: 1.6; color: var(--text); }
+        .highlight { color: var(--accent2); font-weight: bold; }
         
-        /* Header */
+        /* Header Block */
         header { 
-            border-bottom: 4px solid var(--cyan); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
+            border-bottom: 4px solid var(--accent); 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.2in 0.4in;
         }
-        .header-text { display: flex; flex-direction: column; }
+        .header-text { display: flex; flex-direction: column; max-width: 65%; }
+        .tagline { margin-top: 15px; font-size: 1.5rem; color: var(--text); }
         
-        /* Logo & Contact Info */
-        .header-logo { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end; 
-            justify-content: center; 
-            gap: 12px;
+        .header-assets {
+            display: flex; flex-direction: column; align-items: flex-end; gap: 15px;
         }
-        .header-logo img { height: 1.3in; width: auto; object-fit: contain; }
-        .contact-info { 
-            font-family: 'Courier New', Courier, monospace; 
-            font-size: 1rem; 
-            color: var(--text-muted); 
-            letter-spacing: 1px;
+        .logo-qr-row {
+            display: flex; align-items: center; gap: 25px;
+        }
+        .logo-qr-row img.logo { height: 2.2in; width: auto; object-fit: contain; }
+        .logo-qr-row img.qr { 
+            height: 2in; width: 2in; background: white; padding: 10px; 
+            border-radius: 12px; border: 3px solid var(--accent); 
         }
 
-        /* The Core Thesis */
-        .thesis { display: flex; align-items: center; justify-content: center; text-align: center;}
-        .thesis p { font-size: 1.4rem; max-width: 80%; margin: 0 auto; }
-        .highlight { color: var(--magenta); font-weight: bold; }
+        .contact-info { 
+            font-family: 'Courier New', Courier, monospace; font-size: 1.4rem; font-weight: bold;
+            color: var(--text); background-color: rgba(0, 229, 255, 0.1);
+            padding: 12px 25px; border: 2px solid var(--accent); border-radius: 8px;
+        }
+        .contact-info span { color: var(--accent); }
 
         /* Main 3-Column Layout */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
-            gap: 0.4in;
-        }
+        .main-content { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 0.4in; }
 
         /* Center Graphic Area */
         .center-graphic {
-            border: 2px dashed var(--magenta);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 70%;
-            margin-top: 0.2in;
-            background: radial-gradient(circle, rgba(255,0,85,0.1) 0%, rgba(10,10,10,0) 70%);
+            border: 2px dashed var(--accent); border-radius: 8px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; flex-grow: 1; margin: 0.2in 0;
+            background: radial-gradient(circle, rgba(0,229,255,0.05) 0%, rgba(10,10,10,0) 70%);
         }
-        .center-graphic h1 { color: var(--magenta); font-size: 2.5rem; text-align: center;}
+        .center-graphic h1 { color: var(--accent); font-size: 2.5rem; text-align: center;}
 
         /* Code Blocks */
         pre {
-            background-color: #050505;
-            color: var(--green);
-            padding: 0.2in;
-            border-left: 4px solid var(--green);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
+            background-color: #050505; color: var(--code-text); padding: 0.2in;
+            border-left: 4px solid var(--accent); font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem; overflow-x: auto; border-radius: 0 6px 6px 0; margin: 0.1in 0;
         }
 
-        /* Bottom Breadboards - 5 Column Grid */
+        /* Bottom Breadboards */
         .breadboards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.2in; }
-        .breadboard-card { border-top: 4px solid var(--yellow); padding-top: 0.1in; }
-        .breadboard-card h4 { color: var(--yellow); margin-top: 0; font-size: 1.15rem; }
-        .breadboard-card p { font-size: 0.95rem; }
+        .breadboard-card { border-top: 4px solid var(--accent2); padding-top: 0.1in; }
+        .breadboard-card h4 { color: var(--accent2); margin-top: 0; font-size: 1.25rem; }
+        .breadboard-card p { font-size: 1rem; color: var(--muted); }
     </style>
 </head>
 <body>
@@ -133,106 +105,85 @@
     <header class="panel">
         <div class="header-text">
             <h1>The Cyber-Physical Hypervisor</h1>
-            <h2>Mechanism-as-a-Service (MaaS) for Autonomous, Formally Verified Scientific Discovery</h2>
+            <h2>A Runtime for Unified Reasoning Across Cyber, Physical, and AI Systems</h2>
+            <div class="tagline">One abstraction &rarr; many domains. <span class="highlight">State + Constraints + Transformations</span></div>
         </div>
-        <div class="header-logo">
-            <img src="CyberinQ_Logo.png" alt="CyberinQ Logo">
-            <div class="contact-info">Contact: Sunil Jain | ceo@empowerai.us | +1.503.705.5096</div>
+        <div class="header-assets">
+            <div class="logo-qr-row">
+                <img src="CyberinQ_Logo.png" alt="CyberinQ Logo" class="logo">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://empowerai.us" alt="QR Code" class="qr">
+            </div>
+            <div class="contact-info">
+                Contact: Sunil Jain <span>|</span> ceo@empowerai.us <span>|</span> +1.503.705.5096
+            </div>
         </div>
     </header>
 
-    <section class="panel thesis">
-        <p>Current state-of-the-art AI relies on forward-guessing in clean data environments. We abandon forward-guessing. By treating the operational environment as a <span class="highlight">Tensor of Tensors</span>, we utilize <span class="highlight">Inverse Hamiltonian Architectures</span> to define a stable, desired end-state and mathematically back-calculate the exact policy potential field required to force the environment into that state.</p>
-    </section>
-
     <div class="main-content">
-        
         <aside class="panel">
-            <h3>Disentangling Complex Data Streams</h3>
-            <h4>Blind Source Separation (Micro-Scale)</h4>
-            <p>Resolving non-linear signal overlaps in &lt;50ms using Physics-Informed Neural Networks (PINNs) bounded by immutable mass-balance constraints.</p>
+            <h3 style="color: var(--accent); border-color: var(--accent);">1. The Core Abstraction</h3>
+            <p>All systems reduce to a common structure. This Unified State Graph enables a single runtime to model, simulate, and control systems across domains:</p>
+            <pre><code>G(t) = (Entities, Relationships, State(t), Constraints)</code></pre>
             
-            <h4>The Deception Penalty (Macro-Scale)</h4>
-            <p>Automating anomaly detection by mathematically quantifying the divergence between declared intent and verified physical ground-truth.</p>
-            <div style="font-size: 1.5rem; text-align: center; margin: 0.3in 0;">
-                $$\mathcal{D}_{i}^{(t)}=\alpha||\phi(x_{declared}^{(t)})-\psi(x_{physical}^{(t)})||_{2}^{2}+\beta\mathcal{H}(x_{cyber}^{(t)})$$
+            <h3 style="color: var(--accent); border-color: var(--accent); margin-top: 0.3in;">2. System Architecture</h3>
+            <h4>Representation</h4><p>Encodes all systems as time-evolving graphs.</p>
+            <h4>Constraint Engine</h4><p>Unifies physics, policy, and learned priors into one solver.</p>
+            <h4>Transformation Algebra</h4><p>Composable operators govern system evolution.</p>
+            <h4>Runtime</h4><p>Executes real-time inference, simulation, and control.</p>
+            <div style="margin-top: auto; padding-top: 0.3in; border-top: 1px solid var(--border);">
+                <h4>Why This Matters</h4>
+                <ul>
+                    <li><span style="color: var(--accent);">✔</span> One representation across domains</li>
+                    <li><span style="color: var(--accent);">✔</span> One constraint-solving runtime</li>
+                    <li><span style="color: var(--accent);">✔</span> One composable execution model</li>
+                </ul>
             </div>
-            <ul>
-                <li>\(\phi(x_{declared})\): Spoofed or manipulated telemetry.</li>
-                <li>\(\psi(x_{physical})\): Immutable physical ground truth (SAR, RF).</li>
-                <li>\(\mathcal{H}(x_{cyber})\): Topological entropy (Blockchain/Network).</li>
-            </ul>
         </aside>
 
-        <main class="panel" style="border-color: var(--magenta);">
-            <h3 style="color: var(--magenta); border-color: var(--magenta);">The Universal Routing Architecture</h3>
-            <p style="text-align: center;">A tripartite cyber-physical pipeline solving the <strong>Sim2Real</strong> gap across diverse scientific domains.</p>
-            
+        <main class="panel" style="border-color: var(--accent2);">
+            <h3>Insight Glimpses (Mechanisms, Not Buzzwords)</h3>
+            <p style="text-align: center; color: var(--muted);">Mathematical foundations for extracting generalizable principles.</p>
             <div class="center-graphic">
                 <h1>[ VISUAL ASSET PLACEMENT ]</h1>
-                <p style="color: #888; font-family: monospace;">Insert 3D Block Diagram / Tensor Factorization Heatmap Here</p>
+                <p style="color: #888; font-family: monospace;">Insert 3D State Graph / Architecture Pipeline Here</p>
             </div>
-            
-            <div style="margin-top: 0.3in;">
-                <p><strong>1. Cloud Simulation:</strong> CP Tensor Decomposition compresses massive multi-agent state spaces into tractable manifolds.</p>
-                <p><strong>2. Formal Gate:</strong> dReal SMT Solvers prove \(\delta\)-reachability. Replaces "Black Box" hallucination with Safe State Reverts.</p>
-                <p><strong>3. Edge Actuation:</strong> Memory-safe Rust constraints execute deterministic policies on SWaP-constrained hardware.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.2in;">
+                <div>
+                    <h4 style="color: var(--accent2);">Mechanism-as-a-Service (MaaS)</h4>
+                    <p style="font-size: 0.95rem;">All domains compile to the same constrained kernel. Physics, policy, and learned priors co-solve.</p>
+<pre style="font-size: 0.85rem;"><code>minimize:   L(X) = L_phys + L_pol + L_lrn
+subject to: C(X) = 0</code></pre>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent2);">&delta;-Verification (Safety Gate)</h4>
+                    <p style="font-size: 0.95rem;">SMT-backed checks ensure only actions with mathematically bounded risk are executed.</p>
+<pre style="font-size: 0.85rem;"><code>prove:  Reachable(S, &delta;) &rArr; Safe
+else:   revert()</code></pre>
+                </div>
             </div>
         </main>
 
         <aside class="panel">
-            <h3>Governing AI Collaboration</h3>
-            <h4>Applied Category Theory (ACT)</h4>
-            <p>Providing a verifiable mathematical language for AI agents to collaborate by defining networks as categories, mechanisms as functors, and adversarial adaptations as natural transformations.</p>
-            
-            <h4>Zero-Knowledge Information Theory</h4>
-            <p>Agents mathematically prove state, compliance, or intelligence to the swarm via recursive zk-STARKs <em>without</em> exposing raw underlying telemetry streams.</p>
-            
-            <p><strong>Edge Autonomy Logic (Bare-Metal Rust):</strong></p>
-<pre><code>// LAYER 3: POLICY CHECK (The "Filter")
-if OFAC_LIST.contains(&sender) {
-    return MockProof { 
-        is_valid: false, 
-        reason: "REJECTED_L3".to_string() 
-    };
-}
-
-// LAYER 1: PHYSICS CHECK (Solvency)
-if balance < amount {
-    return MockProof { 
-        is_valid: false, 
-        reason: "REJECTED_L1".to_string() 
-    };
-}</code></pre>
+            <h3 style="color: var(--accent); border-color: var(--accent);">Advanced Math & Interfaces</h3>
+            <h4>POMDP on Graphs</h4>
+            <p>Partial observability handled natively. Belief updates operate directly on graph-structured states.</p>
+            <div style="font-size: 1.3rem; text-align: center; margin: 0.2in 0;">
+                $$b_t = \eta \cdot O(o|s) \cdot \sum T(s|s',a) \cdot b_{t-1}$$
+            </div>
+            <h4>Tensor-of-Tensors</h4>
+            <p>Cross-domain coupling via shared factors. CP-style decomposition aligns signals across domains.</p>
+            <div style="font-size: 1.3rem; text-align: center; margin: 0.2in 0;">
+                $$X \approx \sum a_r \otimes b_r \otimes c_r$$
+            </div>
+            <h4 style="margin-top: 0.4in;">3. Minimal API Interface</h4>
+<pre><code>class CPH:
+  def register_entity(self, id, state): pass
+  def add_constraint(self, fn): pass
+  def apply_operator(self, op): pass
+  def step(self, dt): pass
+  def query(self, predicate): pass</code></pre>
         </aside>
     </div>
 
     <footer class="panel">
-        <h3 style="margin-bottom: 0.1in; border:none;">Empirical TRL-4 Breadboards (Dual-Use Implementations)</h3>
-        <div class="breadboards">
-            <div class="breadboard-card">
-                <h4>SMORE (Space)</h4>
-                <p>Orbital POMDPs tracking multi-agent stealth maneuvers via cryptographic heartbeats.</p>
-            </div>
-            <div class="breadboard-card">
-                <h4>MANIFOLD (Geoeconomics)</h4>
-                <p>Deep Inverse RL targeting global supply-chain phase transitions.</p>
-            </div>
-            <div class="breadboard-card">
-                <h4>SMASH (Chemistry)</h4>
-                <p>Dynamic thermodynamic routing and inline mass-spec deconvolution for rare-earth micro-refineries.</p>
-            </div>
-            <div class="breadboard-card">
-                <h4>MedsAi (Biology)</h4>
-                <p>Cardiovascular digital twins routing non-linear trauma responses in resource-constrained edges.</p>
-            </div>
-            <div class="breadboard-card">
-                <h4>ORTHOGON (Cyber)</h4>
-                <p>Cryptographic compliance containers and recursive zk-STARKs securing C2 networks against traffic analysis.</p>
-            </div>
-        </div>
-    </footer>
-</div>
-
-</body>
-</html>
+        <h3 style="margin-bottom: 0.1in; border:none; text-transform: none;">4. Cross-Domain Demonstrations <span style="color
