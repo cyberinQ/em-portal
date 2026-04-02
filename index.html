@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Author: Sunil Jain, 2026-04-02
-Description: Landing page with unified Cyber-Physical Hypervisor narrative while preserving domain demos as proof of generality.
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,14 +7,15 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
 
   <style>
     :root {
-      --bg: #0a0a0a;
-      --panel: #121212;
-      --border: #2a2a2a;
-      --text: #e8e8e8;
-      --muted: #888;
-      --accent: #00f0ff;
-      --accent2: #ffaa00;
-      --danger: #ff0055;
+      /* Refined Deep Slate Dark Mode Palette for optimal readability */
+      --bg: #0f1115; 
+      --panel: #1a1d24; 
+      --border: #2e323a;
+      --text: #e2e8f0; 
+      --muted: #94a3b8; 
+      --accent: #00e5ff; /* Crisp but readable Cyan */
+      --accent2: #f5a623; /* Professional Amber */
+      --code-text: #a5d6ff;
     }
 
     body {
@@ -29,6 +26,12 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
       line-height: 1.6;
     }
 
+    /* Remove default blue hyperlink styling universally */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .container {
       max-width: 1400px;
       margin: auto;
@@ -37,29 +40,31 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
 
     header {
       text-align: center;
-      border-bottom: 2px solid var(--accent);
+      border-bottom: 2px solid var(--border);
       padding-bottom: 30px;
     }
 
     h1 {
       font-size: 3rem;
-      color: var(--accent);
+      color: var(--text);
       margin-bottom: 10px;
+      letter-spacing: -0.5px;
     }
 
     h2 {
       font-weight: 300;
       color: var(--muted);
+      margin-bottom: 25px;
     }
 
     .tagline {
       margin-top: 20px;
       font-size: 1.2rem;
-      color: var(--accent2);
+      color: var(--muted);
     }
 
     .section {
-      margin-top: 50px;
+      margin-top: 60px;
     }
 
     .grid {
@@ -76,49 +81,81 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
     }
 
     .card h3 {
-      color: var(--accent);
-      margin-bottom: 10px;
+      color: var(--text);
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.25rem;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      margin-bottom: 15px;
     }
 
     .highlight {
       color: var(--accent2);
+      font-weight: 600;
     }
 
     .code {
       background: #050505;
       border-left: 3px solid var(--accent);
       padding: 15px;
-      font-family: monospace;
-      font-size: 0.9rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      color: var(--code-text);
       overflow-x: auto;
+      border-radius: 0 6px 6px 0;
     }
 
+    /* Fixed Demo Card Link Styling */
     .demo-card {
+      display: block; /* Forces <a> tag to behave like a card */
       border: 1px solid var(--border);
-      padding: 20px;
+      padding: 25px;
       border-radius: 8px;
       background: var(--panel);
       transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .demo-card h3 {
+      color: var(--accent);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .demo-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
     }
 
     .demo-card:hover {
-      box-shadow: 0 0 12px var(--accent);
-      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .demo-card:hover h3 {
+      color: var(--text);
     }
 
     .cta {
-      margin-top: 40px;
+      margin-top: 60px;
       text-align: center;
       font-size: 1.1rem;
+      padding: 40px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--border);
     }
 
     .cta span {
-      color: var(--accent);
+      color: var(--accent2);
+      font-weight: bold;
     }
 
   </style>
@@ -137,16 +174,15 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
     One abstraction → many domains. <span class="highlight">State + Constraints + Transformations</span>
   </div>
 
-  <div style="margin-top:20px; font-family:monospace; color:var(--accent); border:1px dashed var(--accent); display:inline-block; padding:10px 15px; border-radius:6px;">
-    Point of Contact: <span style="color:var(--text)">Sunil Jain</span><br/>
-    sunil@empowerai.us | +1.503.705.5096
+  <div style="margin-top:30px; font-family: 'Courier New', monospace; color:var(--text); border:1px solid var(--border); background: var(--panel); display:inline-block; padding:15px 25px; border-radius:6px;">
+    <span style="color:var(--muted)">Point of Contact:</span> Sunil Jain<br/>
+    <span style="color:var(--accent)">sunil@empowerai.us</span> <span style="color:var(--muted)">|</span> +1.503.705.5096
   </div>
 </header>
 
 
-<!-- CORE IDEA -->
 <div class="section">
-  <h2>1. The Core Abstraction</h2>
+  <h2 style="color: var(--text);">1. The Core Abstraction</h2>
   <div class="card">
     <p>All systems reduce to a common structure:</p>
 
@@ -154,45 +190,43 @@ Description: Landing page with unified Cyber-Physical Hypervisor narrative while
       G(t) = (Entities, Relationships, State(t), Constraints)
     </div>
 
-    <p>
+    <p style="margin-top: 15px; margin-bottom: 0;">
       This Unified State Graph enables a single runtime to model, simulate, and control systems across domains.
     </p>
   </div>
 </div>
 
 
-<!-- ARCHITECTURE -->
 <div class="section">
-  <h2>2. System Architecture</h2>
+  <h2 style="color: var(--text);">2. System Architecture</h2>
   <div class="grid">
 
     <div class="card">
       <h3>Representation</h3>
-      <p>Encodes all systems as time-evolving graphs.</p>
+      <p style="margin-bottom: 0;">Encodes all systems as time-evolving graphs.</p>
     </div>
 
     <div class="card">
       <h3>Constraint Engine</h3>
-      <p>Unifies physics, policy, and learned priors into one solver.</p>
+      <p style="margin-bottom: 0;">Unifies physics, policy, and learned priors into one solver.</p>
     </div>
 
     <div class="card">
       <h3>Transformation Algebra</h3>
-      <p>Composable operators govern system evolution.</p>
+      <p style="margin-bottom: 0;">Composable operators govern system evolution.</p>
     </div>
 
     <div class="card">
       <h3>Runtime</h3>
-      <p>Executes real-time inference, simulation, and control.</p>
+      <p style="margin-bottom: 0;">Executes real-time inference, simulation, and control.</p>
     </div>
 
   </div>
 </div>
 
 
-<!-- API -->
 <div class="section">
-  <h2>3. Minimal Interface</h2>
+  <h2 style="color: var(--text);">3. Minimal Interface</h2>
   <div class="card">
     <div class="code">
 class CPH:
@@ -206,11 +240,10 @@ class CPH:
 </div>
 
 
-<!-- DEMOS -->
 <div class="section">
-  <h2>4. Cross-Domain Demonstrations</h2>
-  <p style="color: var(--muted); margin-bottom:20px;">
-    Each system below is not a standalone product—it is an instantiation of the same underlying hypervisor.
+  <h2 style="color: var(--text);">4. Cross-Domain Demonstrations</h2>
+  <p style="color: var(--muted); margin-bottom:25px; font-size: 1.1rem;">
+    Each system below is not a standalone product—it is an instantiation of the same underlying hypervisor. Select a module to initiate uplink.
   </p>
 
   <div class="grid">
@@ -244,98 +277,93 @@ class CPH:
 </div>
 
 
-<!-- DIFFERENTIATION -->
 <div class="section">
-  <h2>5. Why This Matters</h2>
+  <h2 style="color: var(--text);">5. Why This Matters</h2>
   <div class="card">
     <p>
-      Traditional systems optimize within domains.
-      <br/><br/>
-      This platform enables:
+      Traditional systems optimize within specific, isolated domains. This platform breaks those silos, enabling:
     </p>
 
-    <ul>
-      <li>✔ One representation across domains</li>
-      <li>✔ One constraint-solving runtime</li>
-      <li>✔ One composable execution model</li>
+    <ul style="color: var(--muted); line-height: 2; margin-bottom: 20px;">
+      <li><span style="color: var(--accent);">✔</span> One representation across domains</li>
+      <li><span style="color: var(--accent);">✔</span> One constraint-solving runtime</li>
+      <li><span style="color: var(--accent);">✔</span> One composable execution model</li>
     </ul>
 
-    <p class="highlight">
+    <p class="highlight" style="margin-bottom: 0;">
       The demos are not separate products—they are proofs of a single underlying system.
     </p>
   </div>
 </div>
 
-<!-- SECTION 6: INSIGHT GLIMPSES -->
 <div class="section">
-  <h2>6. Insight Glimpses (Mechanisms, not Buzzwords)</h2>
+  <h2 style="color: var(--text);">6. Insight Glimpses <span style="font-size: 1.2rem; color: var(--muted); font-weight: normal;">(Mechanisms, not Buzzwords)</span></h2>
 
   <div class="grid">
 
     <div class="card">
       <h3>Mechanism-as-a-Service (MaaS)</h3>
       <p>All domains compile to the same constrained optimization kernel:</p>
-      <div class="code">
-minimize:   L(X) = L_phys + L_policy + L_learned
+      <div class="code" style="margin-bottom: 15px;">
+minimize:   L(X) = L_phys + L_pol + L_lrn
 subject to: C(X) = 0
       </div>
-      <p>Physics, policy, and learned priors co-solve—no separate pipelines.</p>
+      <p style="margin-bottom: 0;">Physics, policy, and learned priors co-solve—no separate pipelines.</p>
     </div>
 
     <div class="card">
       <h3>Digital Twin (State Evolution)</h3>
       <p>Deterministic + stochastic evolution over the same state graph:</p>
-      <div class="code">
-X(t+1) = T_learned ∘ T_policy ∘ T_physics (X(t))
+      <div class="code" style="margin-bottom: 15px;">
+X(t+1) = T_lrn ∘ T_pol ∘ T_phys (X(t))
       </div>
-      <p>Single runtime supports simulation and control.</p>
+      <p style="margin-bottom: 0;">Single runtime supports simulation and control.</p>
     </div>
 
     <div class="card">
       <h3>δ-Verification (Safety Gate)</h3>
       <p>Only actions with bounded risk are executed:</p>
-      <div class="code">
+      <div class="code" style="margin-bottom: 15px;">
 prove:  Reachable(S, δ) ⇒ Safe
 else:   revert()
       </div>
-      <p>SMT-backed checks before actuation.</p>
+      <p style="margin-bottom: 0;">SMT-backed checks before actuation.</p>
     </div>
 
     <div class="card">
       <h3>POMDP on Graphs</h3>
       <p>Partial observability handled natively:</p>
-      <div class="code">
-b_t = η · O(o_t | s_t) · Σ T(s_t|s_{t-1},a_{t-1}) · b_{t-1}
+      <div class="code" style="margin-bottom: 15px;">
+b_t = η · O(o|s) · Σ T(s|s',a) · b_{t-1}
       </div>
-      <p>Belief updates operate on graph-structured state.</p>
+      <p style="margin-bottom: 0;">Belief updates operate on graph-structured state.</p>
     </div>
 
     <div class="card">
       <h3>Tensor-of-Tensors</h3>
       <p>Cross-domain coupling via shared factors:</p>
-      <div class="code">
+      <div class="code" style="margin-bottom: 15px;">
 X ≈ Σ a_r ⊗ b_r ⊗ c_r
       </div>
-      <p>CP-style decomposition aligns signals across domains.</p>
+      <p style="margin-bottom: 0;">CP-style decomposition aligns signals across domains.</p>
     </div>
 
     <div class="card">
       <h3>Constraint Composition</h3>
       <p>Heterogeneous rules unified as one system:</p>
-      <div class="code">
+      <div class="code" style="margin-bottom: 15px;">
 C = C_physics ∪ C_policy ∪ C_resource
       </div>
-      <p>One solver, many rule sets.</p>
+      <p style="margin-bottom: 0;">One solver, many rule sets.</p>
     </div>
 
   </div>
 </div>
 
 
-<!-- CTA -->
 <div class="cta">
-  <p><span>Seeking partners:</span> defense, healthcare, infrastructure</p>
-  <p>Contact: sunil@empowerai.us</p>
+  <p style="margin: 0 0 10px 0;"><span>Seeking deployment partners:</span> Defense, Healthcare, and Critical Infrastructure</p>
+  <p style="margin: 0; color: var(--muted);">Direct communications: <a href="mailto:sunil@empowerai.us" style="color: var(--accent);">sunil@empowerai.us</a></p>
 </div>
 
 </div>
