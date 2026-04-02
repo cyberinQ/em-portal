@@ -41,34 +41,59 @@
             gap: 40px;
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER (Centered & Responsive) --- */
         header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             border-bottom: 3px solid var(--cyan);
-            padding-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding-bottom: 30px;
+            gap: 15px;
         }
-        .header-text { display: flex; flex-direction: column; }
-        h1 { color: var(--cyan); font-size: clamp(2rem, 4vw, 3.5rem); text-transform: uppercase; letter-spacing: 2px; line-height: 1.2; }
-        h2 { color: var(--text-muted); font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 300; margin-top: 10px;}
-        .highlight { color: var(--yellow); font-weight: bold; }
         
-        .header-logo { 
+        .header-logo img { 
+            height: 110px; /* Slightly larger as requested */
+            width: auto; 
+            object-fit: contain; 
+            margin-bottom: 10px;
+        }
+
+        .header-text { 
             display: flex; 
             flex-direction: column; 
-            align-items: flex-end; 
-            justify-content: center; 
-            gap: 8px;
+            align-items: center;
+            gap: 10px;
         }
-        .header-logo img { height: 80px; width: auto; object-fit: contain; }
+
+        h1 { 
+            color: var(--cyan); 
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            line-height: 1.2; 
+        }
+        h2 { 
+            color: var(--text-muted); 
+            font-size: clamp(1.2rem, 2vw, 1.8rem); 
+            font-weight: 300; 
+        }
+        .highlight { color: var(--yellow); font-weight: bold; }
+        
         .contact-info { 
             font-family: 'Courier New', Courier, monospace; 
-            font-size: 0.95rem; 
+            font-size: 1.05rem; 
             color: var(--cyan); 
             letter-spacing: 0.5px;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 1px dashed var(--cyan);
+            background-color: rgba(0, 240, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .contact-info span {
+            color: var(--text-main);
         }
 
         /* --- MAIN 3 PILLARS --- */
@@ -179,13 +204,16 @@
 
 <div class="container">
     <header>
+        <div class="header-logo">
+            <img src="CyberinQ_Logo.png" alt="CyberinQ Logo">
+        </div>
         <div class="header-text">
             <h1>The Cyber-Physical Hypervisor</h1>
             <h2>Mechanism-as-a-Service (MaaS) for <span class="highlight">Autonomous, Formally Verified Scientific Discovery</span></h2>
         </div>
-        <div class="header-logo">
-            <img src="CyberinQ_Logo.png" alt="CyberinQ Logo">
-            <div class="contact-info">Contact: Sunil Jain | ceo@empowerai.us | +1.503.705.5096</div>
+        <div class="contact-info">
+            Point of Contact: <span>Sunil Jain</span><br>
+            ceo@empowerai.us <span>|</span> +1.503.705.5096
         </div>
     </header>
 
