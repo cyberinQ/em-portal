@@ -53,7 +53,6 @@
             color: var(--text); border: 1px solid var(--accent); background: rgba(0, 229, 255, 0.1);
             padding: 6px 12px; border-radius: 4px; font-weight: bold;
         }
-        .contact-info span { color: var(--accent); }
 
         /* Main 3-Column Layout */
         .content-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2%; }
@@ -85,7 +84,9 @@
                 <img src="CyberinQ_Logo.png" alt="CyberinQ Logo" class="logo">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://empowerai.us" alt="QR Code" class="qr">
             </div>
-            <div class="contact-info">Contact: Sunil Jain <span>|</span> ceo@empowerai.us <span>|</span> +1.503.705.5096</div>
+            <div class="contact-info">
+                Contact: Sunil Jain | ceo@empowerai.us | +1.503.705.5096
+            </div>
         </div>
     </header>
 
@@ -100,4 +101,36 @@
             <p><strong style="color:var(--text)">Transform Algebra:</strong> Composable evolutionary operators.</p>
         </div>
 
-        <div
+        <div class="panel" style="border-color: var(--accent2); box-shadow: 0 0 15px rgba(245, 166, 35, 0.05);">
+            <h3 style="color: var(--text);">2. Mathematical Insight Glimpses</h3>
+            <h4>Mechanism-as-a-Service (MaaS)</h4>
+            <p>Physics, policy, and learned priors co-solve—no separate pipelines.</p>
+<pre><code>minimize:   L(X) = L_phys + L_pol + L_lrn
+subject to: C(X) = 0</code></pre>
+            <h4>&delta;-Verification (Safety Gate)</h4>
+            <p>SMT-backed checks before actuation guarantee operations stay within bounded risk.</p>
+<pre><code>prove:  Reachable(S, &delta;) &rArr; Safe
+else:   revert()</code></pre>
+        </div>
+
+        <div class="panel">
+            <h3>3. Advanced Execution</h3>
+            <h4>POMDP on Graphs</h4>
+            <p>Partial observability handled natively. Belief updates operate directly on graph-structured state.</p>
+            <div class="math-block">$$b_t = \eta \cdot O(o|s) \cdot \sum T(s|s',a) \cdot b_{t-1}$$</div>
+            <h4>Tensor-of-Tensors</h4>
+            <p>Cross-domain coupling via shared factors utilizing CP-style decomposition.</p>
+            <div class="math-block">$$X \approx \sum a_r \otimes b_r \otimes c_r$$</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-card"><h4>SMORE (Space)</h4><p>Orbital systems modeled as constrained state evolution.</p></div>
+        <div class="footer-card"><h4>MANIFOLD (Econ)</h4><p>Supply chains expressed as flow constraints on dynamic graphs.</p></div>
+        <div class="footer-card"><h4>SMASH (Chem)</h4><p>Material transformations modeled via thermodynamic constraints.</p></div>
+        <div class="footer-card"><h4>MedsAi (Bio)</h4><p>Human physiology represented as evolving constrained systems.</p></div>
+        <div class="footer-card"><h4>ORTHOGON (Cyber)</h4><p>Trust graphs + cryptographic constraints enforced via the same runtime.</p></div>
+    </footer>
+</div>
+</body>
+</html>

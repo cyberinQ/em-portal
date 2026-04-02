@@ -34,7 +34,7 @@
       padding: 40px 20px;
     }
 
-    /* --- HEADER (Massive & Readable) --- */
+    /* --- HEADER --- */
     header {
       display: flex;
       flex-direction: column;
@@ -90,12 +90,13 @@
       font-size: 1.3rem;
       color: var(--muted);
     }
+    
     .highlight { color: var(--accent2); font-weight: 600; }
 
     .contact-info { 
       font-family: 'Courier New', Courier, monospace; 
       font-size: 1.25rem; 
-      color: var(--accent); 
+      color: var(--text); 
       margin-top: 25px;
       padding: 15px 30px;
       border: 1px solid var(--accent);
@@ -104,7 +105,6 @@
       font-weight: bold;
       letter-spacing: 0.5px;
     }
-    .contact-info span { color: var(--text); font-weight: normal;}
 
     /* --- REST OF CSS --- */
     .section { margin-top: 60px; }
@@ -129,6 +129,20 @@
       border-color: var(--accent); box-shadow: 0 4px 20px rgba(0, 229, 255, 0.1); transform: translateY(-3px);
     }
     .demo-card:hover h3 { color: var(--text); }
+    
+    .cta {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 40px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .cta span {
+      color: var(--accent2);
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -148,7 +162,7 @@
   </div>
 
   <div class="contact-info">
-    <span>Contact:</span> Sunil Jain <span>|</span> ceo@empowerai.us <span>|</span> +1.503.705.5096
+    Contact: Sunil Jain | ceo@empowerai.us | +1.503.705.5096
   </div>
 </header>
 
@@ -246,6 +260,11 @@ class CPH:
       <p style="margin-bottom: 0;">One solver, many rule sets.</p>
     </div>
   </div>
+</div>
+
+<div class="cta">
+  <p style="margin: 0 0 10px 0;"><span>Seeking deployment partners:</span> Defense, Healthcare, and Critical Infrastructure</p>
+  <p style="margin: 0; color: var(--muted);">Contact: Sunil Jain | <a href="mailto:ceo@empowerai.us" style="color: var(--accent);">ceo@empowerai.us</a> | +1.503.705.5096</p>
 </div>
 
 </div>
