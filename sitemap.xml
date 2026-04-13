@@ -9,6 +9,15 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- MathBac Module -->
+  <url>
+      <loc>https://mathbac.empowerai.us</loc>
+      <lastmod>2026-04-13</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
+    </url>
+  </urlset>
+
   <!-- ORTHOGON Module -->
   <url>
     <loc>https://orthogon.empowerai.us</loc>
