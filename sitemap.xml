@@ -25,6 +25,15 @@
       <priority>0.9</priority>
     </url>
 
+  <!-- VCM-Control Module -->
+
+  <url>
+    <loc>https://vcm.empowerai.us</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ORTHOGON Module -->
   <url>
     <loc>https://orthogon.empowerai.us</loc>
