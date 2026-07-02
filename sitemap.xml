@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Ghost Track Subdomain Target -->
+  <!-- Ghost Track Destination -->
   <url>
     <loc>https://gt.empowerai.us</loc>
     <lastmod>2026-07-02</lastmod>
