@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMPOWERAI // Project cVitals (Zero-Contact NICU & Multi-Modal Aperture)</title>
+  <meta name="description" content="Project cVitals by CyberinQ: Contactless & Multi-Modal Physiological Synthetic Apertures powered by the Two-Stage Jain Ansatz (Sheaf Laplacian, DPC Gate, and SINDy)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cvitals.empowerai.us/" />
+  <meta property="og:title" content="EMPOWERAI // Project cVitals" />
+  <meta property="og:description" content="Zero-contact neonatal & clinical vital sign synthetic apertures using COTS tablets, wavefield inversion, and clockless sheaf coherence." />
+  <meta property="og:image" content="https://empowerai.us/CyberinQ_Logo.png" />
+  <style>
+    :root {
+      /* Daylight Clinical Light-Mode Palette */
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent-soft: rgba(2, 132, 199, 0.08);
+      --accent2: #d97706;
+      --emerald: #059669;
+      --code-bg: #f1f5f9;
+      --code-text: #0369a1;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1280px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .meta-brand {
+      color: var(--accent);
+      font-family: monospace;
+      font-weight: bold;
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 10px 0;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      color: var(--accent2);
+      margin-top: 45px;
+      border-left: 4px solid var(--accent2);
+      padding-left: 15px;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .highlight { color: var(--accent2); font-weight: 600; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      color: var(--text);
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+    }
+
+    .code {
+      background: var(--code-bg);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.92rem;
+      color: var(--code-text);
+      overflow-x: auto;
+      border-radius: 0 6px 6px 0;
+      font-weight: 600;
+    }
+
+    /* --- DATA TABLE --- */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel);
+      margin-top: 20px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.93rem;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.85rem;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td:first-child {
+      font-weight: 600;
+      color: var(--text);
+      width: 22%;
+    }
+
+    td { color: var(--muted); }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .layer-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .layer-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .layer-box strong { color: var(--text); font-size: 1.05rem; }
+    .layer-box span { color: var(--muted); font-size: 0.92rem; }
+
+    .cta {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 1.05rem;
+      padding: 35px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="https://empowerai.us" class="back-link">&larr; Return to EmpowerAI Platform</a>
+
+  <header>
+    <div class="meta-brand">CYBERINQ // BIOPHYSICAL HYPERVISOR MODULE</div>
+    <h1>Project cVitals (NICU-OS &amp; Synthetic Apertures)</h1>
+    <p class="tagline">
+      Zero-Contact Multi-Modal Physiological Apertures via <span class="highlight">Two-Stage Jain Ansatz Coherence</span>
+    </p>
+  </header>
+
+  <div class="card">
+    <p>
+      <strong>Project cVitals</strong> transforms standard Commercial Off-The-Shelf (COTS) tablets and edge sensors into a coherent, multi-physics physiological imaging array. Designed initially for the fragile Neonatal Intensive Care Unit (NICU) environment, cVitals eliminates iatrogenic skin stripping from adhesive electrodes and suppresses the &gt;85% false-alarm rate caused by motion artifacts.
+    </p>
+    <p style="margin-bottom: 0;">
+      Instead of relying on single-domain sensors or brittle IEEE 1588 hardware clocks, cVitals treats multiple uncalibrated cameras, ultrasonic speaker/microphone arrays, inertial measurement units (IMUs), and RF/Wi-Fi subcarriers as a unified <strong>Synthetic Aperture</strong>. Using the <strong>Jain Ansatz</strong>, when multiple imperfect sensors observe the same physiological event, their geometric consistency alone filters out random incubator scattering and locks wavefield phase down to microseconds.
+    </p>
+  </div>
+
+  <h2>1. The Mathematical Spine: Two-Stage Jain Ansatz</h2>
+  <div class="grid">
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">STAGE 1 // INSTANTANEOUS FIELD SHEAF</div>
+      <h3>Clockless Wavefield Coherence</h3>
+      <div class="code" style="margin-bottom: 14px;">&mathcal;L;<sub>&mathcal;F;<sub>field</sub></sub> x = 0 &rArr; &Delta;&tau;<sub>A&harr;B</sub> &lt; 5 &mu;s</div>
+      <p style="margin-bottom: 0;">
+        Aligns overlapping optical chest fields and broadband acoustic torso reflections in bare-metal Rust, bypassing OS buffer jitter and auto-calibrating 6-DoF spatial restriction maps (&mathcal;F;<sub>i&rarr;e</sub>) in &lt;1 second.
+      </p>
+    </div>
+
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">STAGE 2 // BIOLOGICAL TRANSPORT SHEAF</div>
+      <h3>Propagating Pulse Transit Preservation</h3>
+      <div class="code" style="margin-bottom: 14px;">&Delta;&phi;<sub>bio</sub> = || &mathcal;F;<sub>A&rarr;e</sub> x<sub>head</sub> &minus; &mathcal;F;<sub>B&rarr;e</sub> x<sub>foot</sub> ||</div>
+      <p style="margin-bottom: 0;">
+        Freezes Stage-1 clock/pose restriction maps across spatially separated ROIs so true biological propagation delays (Head-to-Foot Pulse Transit Time for cuffless BP and ductal shunting) are never erased.
+      </p>
+    </div>
+
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">DPC GATE + SINDy // DETERMINISTIC SAFETY</div>
+      <h3>Ill-Posedness Gating &amp; Nonlinear Dynamics</h3>
+      <div class="code" style="margin-bottom: 14px;">Picard(&sigma;<sub>i</sub>, |u<sub>i</sub><sup>T</sup>b|) &rArr; Gate() | x&#775; = &Theta;(x)&xi;</div>
+      <p style="margin-bottom: 0;">
+        The Discrete Picard Condition (DPC) Gate halts ill-posed scattering inversions during clinician touch, while SINDy extracts sparse cardiorespiratory limit-cycle equations for sepsis and autonomic tracking.
+      </p>
+    </div>
+  </div>
+
+  <h2>2. The 5-Layer NICU-OS Microservice Architecture ("Collect Once, Reuse Everywhere")</h2>
+  <div class="layer-stack">
+    <div class="layer-box">
+      <strong>Layer 5: Clinical HUD, Digital Twin &amp; Interoperability</strong>
+      <span>Sepsis/NEC Predictor &bull; True Apnea &amp; Work-of-Breathing HUD &bull; Cuffless BP &amp; PDA Monitor &bull; Apple Watch &plusmn;1% Validation Overlay &bull; FHIR Bridge</span>
+    </div>
+    <div class="layer-box">
+      <strong>Layer 4: Virtual Aperture &amp; Cross-Physics Fusion Microservices</strong>
+      <span>3D Bistatic Sonar Lung Tomography &bull; Multi-Site iPTT &bull; Omnidirectional rPPG+BCG &bull; 12-Mic Beamforming Auscultation &bull; Orthogonal Motion Canceller</span>
+    </div>
+    <div class="layer-box">
+      <strong>Layer 3: "Extract Once" Atomic Feature Microservices (NPU / GPU / DSP)</strong>
+      <span>3D Baby Pose &amp; ROI Mesh Tracker &bull; Skin Chromophore Tensor &bull; 18&ndash;24 kHz FMCW Demodulator &bull; Vibro-Inertial BCG/SCG &bull; Fontanelle Specular Glint</span>
+    </div>
+    <div class="layer-box" style="border-left-color: var(--accent2);">
+      <strong>Layer 2: The Jain Ansatz Spine (Tier-0 Bare-Metal Rust)</strong>
+      <span>Stage-1 Field Sheaf Sync (&mathcal;L;<sub>&mathcal;F;</sub>x = 0) &bull; Stage-2 Bio-Transport Propagator &bull; DPC Safety Gate &bull; Auto-6DoF Sheaf-SLAM &bull; 72h Flight Recorder</span>
+    </div>
+    <div class="layer-box">
+      <strong>Layer 1: Hot-Swappable Hardware Abstraction Layer (HAL) Plugins</strong>
+      <span>Phase 1: COTS Camera/ToF, Audio/Sonar, IMU, Wi-Fi CSI &bull; Phase 2: 60&ndash;140 GHz MIMO Radar, LWIR Thermal, Laser Speckle &bull; Phase 3: Micro-Vacuum Chest Cup</span>
+    </div>
+  </div>
+
+  <h2>3. Phase 1 COTS Multi-Tablet Virtual Apertures &amp; Clinical Deliverables</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Clinical Problem Solved</th>
+          <th>Single COTS Sensor Baseline</th>
+          <th>Multi-Tablet Virtual Aperture Fusion</th>
+          <th>Novel Clinical Value ("The Something Extra")</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Bradycardia, Tachycardia &amp; Arrhythmias (Zero Adhesives)</td>
+          <td>Single RGB/NIR Camera (rPPG) pulse rate; sensitive to head turns and lighting.</td>
+          <td><strong>3D Omnidirectional Optical + Isolette IMU BCG Aperture:</strong> 3-angle rPPG fused with mattress cardiac recoil.</td>
+          <td><strong>Electromechanical Pulse-Recoil Coupling:</strong> Tracks delay between BCG J-wave recoil and skin flush as a continuous Stroke Volume trend.</td>
+        </tr>
+        <tr>
+          <td>2. Apnea of Prematurity (Central vs. Obstructive)</td>
+          <td>Single-speaker 18&ndash;22 kHz FMCW sonar tracking 1D chest rise.</td>
+          <td><strong>Bistatic 3D Acoustic Tomography + LiDAR/ToF Aperture:</strong> Forward/back-scatter thoracic tomography across orthogonal tablets.</td>
+          <td><strong>Thoraco-Abdominal Asynchrony (TAA) &amp; Airway Effort:</strong> Separates Obstructive Apnea (paradoxical heave) from Central Apnea instantly.</td>
+        </tr>
+        <tr>
+          <td>3. Neonatal Sepsis &amp; Gut Ischemia (NEC) Early Warning</td>
+          <td>Spot-check visual skin inspection or single-ROI forehead perfusion index.</td>
+          <td><strong>Spatio-Temporal Microvascular Perfusion Aperture:</strong> Simultaneous rPPG AC/DC perfusion across Head, Abdomen, and Feet.</td>
+          <td><strong>2D Virtual Capillary Refill &amp; Splanchnic Map:</strong> Detects peripheral vasoconstriction and gut hyperemia 12&ndash;24h before vital signs crash.</td>
+        </tr>
+        <tr>
+          <td>4. Cuffless Blood Pressure &amp; PDA Ductal Shunting</td>
+          <td>Single-camera facial Pulse Wave Analysis (PWA) morphology trend.</td>
+          <td><strong>Stage-2 Sheaf Head-to-Foot iPTT Aperture:</strong> Millisecond optical pulse transit from Pre-Ductal (Face/Right Hand) to Post-Ductal (Feet).</td>
+          <td><strong>Beat-to-Beat Cuffless MAP &amp; Ductal Steal Index:</strong> Flags BP surges (preventing brain bleeds) and Patent Ductus Arteriosus shunting.</td>
+        </tr>
+        <tr>
+          <td>5. Hypoxia, Anemia (SpHb) &amp; Jaundice (Bilirubin)</td>
+          <td>Dual-band RGB + 940 nm NIR ratio; vulnerable to ambient glare.</td>
+          <td><strong>Multi-Angle Active Screen Spectral Aperture:</strong> Overhead OLED screen emits lock-in chromatic pulses read by orthogonal cameras.</td>
+          <td><strong>Contactless Hematology &amp; Bilirubin:</strong> Non-invasive anemia (SpHb) and jaundice tracking, slashing painful heel-stick blood draws.</td>
+        </tr>
+        <tr>
+          <td>6. Stridor, Wheezing &amp; Feeding Readiness</td>
+          <td>Single microphone; drowned out by incubator fan noise.</td>
+          <td><strong>12-Mic Spatial Acoustic Phased Array:</strong> Nulls incubator motor noise and steers an acoustic spotlight onto the trachea.</td>
+          <td><strong>Contactless Auscultation &amp; Swallow-Breathe Sync:</strong> Quantifies subglottic stridor, wheezes, and safe feeding coordination.</td>
+        </tr>
+        <tr>
+          <td>7. Subclinical Seizures, Pain &amp; &gt;85% False Alarms</td>
+          <td>Basic 2D video motion detection; cannot separate kicks from seizures.</td>
+          <td><strong>4D Kinematic + DPC Gate + SINDy Autonomic Aperture:</strong> Projects limb velocity into ker(&mathcal;L;<sub>&mathcal;F;</sub>)<sup>&perp;</sup> to cancel motion noise.</td>
+          <td><strong>&gt;80% False Alarm Suppression &amp; Objective Pain HUD:</strong> Mathematically subtracts kicking artifacts while flagging rhythmic clonic seizures.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>4. Phased Roadmap: From Desk Rig to Custom NICU Hardware</h2>
+  <div class="grid">
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">PHASE 1 // ZERO-CONTACT COTS ARRAY</div>
+      <h3>MacBook + iPhone Desk Rig &amp; Multi-iPad NICU</h3>
+      <p style="margin-bottom: 0;">
+        Exercises built-in RGB/NIR cameras, 18&ndash;24 kHz ultrasonic sonar, multi-mic arrays, Wi-Fi CSI, and internal IMUs. Validated against Apple Watch / Whoop / Polar H10 to within &plusmn;1% concordance.
+      </p>
+    </div>
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">PHASE 2 // CUSTOM BEZEL SENSOR BAR</div>
+      <h3>Sub-THz Radar, LWIR Thermal &amp; Laser Speckle</h3>
+      <p style="margin-bottom: 0;">
+        Drops in 60&ndash;140 GHz 4D MIMO Radar (5-valve contactless SCG), 8&ndash;14 &mu;m LWIR thermal microbolometers, and trans-fontanelle Coherent Laser Speckle (SCOS) via Layer-1 HAL plugins.
+      </p>
+    </div>
+    <div class="card" style="margin-bottom: 0;">
+      <div class="badge">PHASE 3 // GENTLE BIO-COUPLED COMPANIONS</div>
+      <h3>Micro-Vacuum Chest Cup &amp; Dual Foot Wraps</h3>
+      <p style="margin-bottom: 0;">
+        Zero-adhesive soft silicone micro-vacuum chest cup (ECG, 3-axis SCG, PCG, ZHF Core Temp, PtcCO<sub>2</sub>) + dual leg wraps (12-wavelength SpHb/SpO<sub>2</sub>) for arterial-line-grade precision.
+      </p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <p style="margin: 0 0 10px 0;"><strong style="color: var(--accent2);">Clinical &amp; Research Deployment Partners:</strong> Neonatal ICU, Telehealth, and Autonomous Patient Monitoring</p>
+    <p style="margin: 0; color: var(--muted);">Contact: Sunil Jain | <a href="mailto:sunil@empowerai.us" style="color: var(--accent); font-weight: 600;">sunil@empowerai.us</a> | +1.503.705.5096 | CyberinQ LLC</p>
+  </div>
+</div>
+
+</body>
+</html>
